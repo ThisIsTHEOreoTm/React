@@ -28,7 +28,7 @@ function App() {
         <h3>Welcome to Vite + React</h3>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Click on the Vite and React logos to learn more and sofi
       </p>
       <Design />
     </>
