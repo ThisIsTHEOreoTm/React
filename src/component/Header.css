@@ -2,10 +2,10 @@
 .Head{
  padding: 10px 20px;
  margin: 0 auto;
- background-color: #0a771c;
+ background-color: #328E6E;
  font: 20px Arial, sans-serif;
  color: white;
- font-size: 40px;
+ font-size: 50px;
  font-weight: bold;
  display: flex;
  align-items: center;
@@ -13,7 +13,7 @@
 
 .container{
  padding: 10px 20px;
- background-color: #0a771c;
+ background-color: #328E6E;
  margin: 0 auto;
  display: flex;
  box-shadow: 0 4px 15px black;

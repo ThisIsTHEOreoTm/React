@@ -1,6 +1,6 @@
 import Header from './component/Header'
 import Post from './component/post'
-import bottons from './component/bottons'
+import Bottonss from './component/bottons'
 import './App.css'
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Post />
       </div>
       <div className="container3">
-
+        <Bottonss />
       </div>
       </div>
     </>

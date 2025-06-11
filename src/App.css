@@ -4,13 +4,16 @@
     padding: 0;
 }
 .Father{
-  border: 2px solid black;
   margin-top: 20px;
   display: flex;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
+  gap: 20px;
 }
 
 .container2{
   width: 50%;
+}
+.container3{
+  width: 40%;
 }
