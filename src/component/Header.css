@@ -1,0 +1,21 @@
+
+.Head{
+ padding: 10px 20px;
+ margin: 0 auto;
+ background-color: #0a771c;
+ font: 20px Arial, sans-serif;
+ color: white;
+ font-size: 40px;
+ font-weight: bold;
+ display: flex;
+ align-items: center;
+}
+
+.container{
+ padding: 10px 20px;
+ background-color: #0a771c;
+ margin: 0 auto;
+ display: flex;
+ box-shadow: 0 4px 15px black;
+ height: 18vh;
+}
