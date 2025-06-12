@@ -1,21 +1,14 @@
 import "./bottons.css";
 
-let bottons = () => {
+let bottons = ({title, children}) => {
     return (
+        
         <div className="bottons">
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
-            <button className="btn">Try button</button>
+            <button className="btn">
+                 {title}
+                {children}
+            </button>
+        
         </div>
     );
 }
