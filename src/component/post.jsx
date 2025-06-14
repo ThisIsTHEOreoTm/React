@@ -1,12 +1,20 @@
 import "./post.css";
 
-let post = ()=> {
+let post = ({title,content,children})=> {
     return (
         <div className="post">
-            <h2 className="post-title">This is The Post Title</h2>
+
+            {children && (
+        <div style={{ marginBottom: "20px" }}>
+          {children}
+        </div> )}
+           
+            <h2 className="post-title">{title}</h2>
             <hr/>
-            <p className="post-content">This in the Post body </p>
+            <p className="post-content">{content}</p>
         </div>
     );
 }
+
+
 export default post;
