@@ -4,6 +4,8 @@ import Header from './component/Header'
 import Post from './component/post'
 import Bottonss from './component/bottons'
 import './App.css'
+import React from 'react';
+import Try from './component/try';
 
 function App() {
   const posts = [
@@ -46,6 +48,7 @@ function App() {
         {bottonElements}
       </div>
       </div>
+      <Try />
     </>
   )
 }

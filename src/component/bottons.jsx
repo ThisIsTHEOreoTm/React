@@ -13,8 +13,3 @@ let bottons = ({title, children}) => {
     );
 }
 export default bottons;
-
-
-
-
-
