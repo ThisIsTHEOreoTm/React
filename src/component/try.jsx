@@ -6,6 +6,8 @@ let Try = () => {
     
     function changeName() {
         setCount("Mohamed");
+        console.log("Name changed to Mohamed");
+        alert("Name changed to Mohamed");
         
     }   
     return (
