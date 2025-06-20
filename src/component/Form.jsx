@@ -5,15 +5,19 @@ let Form = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        role: '',
+        subscribe: false,
+        radio: '' 
     });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked} = e.target;
         setFormData({
             ...formData,
-            [name]: value               
+            [name]: type === 'checkbox' ? checked : value               
         });
+        console.log(e.target);
         console.log(`Field ${name} changed to: ${value}`);
     };
 
@@ -22,7 +26,6 @@ let Form = () => {
         console.log('Form submitted:', formData);
         // Here you can add logic to send the form data to a server or API
     };
-
     return (
         <form className="form" onSubmit={handleSubmit}>
             <h2>Contact Us</h2>
@@ -36,11 +39,29 @@ let Form = () => {
             </label>
             <label>
                 Message:
-            </label>
                 <textarea name="message" value={formData.message} onChange={handleChange} required></textarea>
-            
+            </label>
+            <label>
+                are you a student or teacher?
+                <select name="role" onChange={handleChange} required>
+                    <option value="">Select...</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+            </label>
+            <label>
+                <input type="checkbox" name="subscribe" onChange={handleChange} />
+                Subscribe to newsletter
+            </label>
+            <label>
+                <div className="radio-label">
+                <input name="radio" type="radio" value="TTT" onChange={handleChange}  checked={formData.radio == 'TTT'}/>TTT
+                <input name="radio" type="radio" value="DDD" onChange={handleChange}  checked={formData.radio == 'DDD'}/>TTT   
+                </div>
+            </label>
             <button type="submit">Submit</button>
         </form>
+        
     );
 } 
 export default Form;

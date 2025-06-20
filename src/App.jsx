@@ -10,7 +10,7 @@ import Form from './component/Form';
 function App() {
   return (
     <>
-      <div className="">
+      <div className="center">
         <Form />
       </div>
     </>
