@@ -1,6 +1,3 @@
-import React from 'react';
-import { useState } from 'react';
-import Form from './Form.css';
 import './Form.css';
 
 let Form = () => {
