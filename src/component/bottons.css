@@ -1,15 +1,5 @@
-.bottons{
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    border: 4px solid cyan;
-    padding: 20px;     
-}
-
-button{
-    padding: 10px 20px;
+.btn{
+      padding: 11px 10px;
     background-color: purple;
     color: white;
     border: none;
@@ -26,3 +16,16 @@ button{
 button:hover{
     background-color: darkviolet;
 }
+.img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid purple;
+
+    border-radius: 9px;
+    box-shadow: 0 3px 4px black;
+}
+
+
+
+
