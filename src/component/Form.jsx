@@ -33,6 +33,7 @@ let Form = () => {
             alert('Please fill in all required fields!');
         }
     };
+    
     useEffect(() => {
         const allFilled = requiredFields.every(field => 
             formData[field] && formData[field].toString().trim() !== ''
@@ -40,6 +41,7 @@ let Form = () => {
         setIsFormValid(allFilled);
     }, [formData]);
 
+    
     const closePopup = () => {
     setShowPopup(false);
     setFormData({
@@ -95,10 +97,9 @@ let Form = () => {
                 }
             </p>
         </div>
-        
+    
 
-
-
+    
         {showPopup && <PopUp formData={formData} onClose={closePopup} />}
         <footer>
           <p>© 2025 from The Oreo</p>
