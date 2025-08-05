@@ -6,7 +6,14 @@ import PopUp from './popUp';
 
 let Form = () => {
     const [isFormValid, setIsFormValid] = useState(false);
-    const requiredFields = ['name', 'phone_number', 'Age', 'Salary'];
+    const [validationMessage, setValidationMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState({
+        name: '',
+        phone_number: '',
+        Age: '',
+        Salary: ''
+    });
+
     const [formData, setFormData] = useState({
         name: '',
         phone_number: '',
@@ -34,12 +41,53 @@ let Form = () => {
         }
     };
     
-    useEffect(() => {
-        const allFilled = requiredFields.every(field => 
-            formData[field] && formData[field].toString().trim() !== ''
-        );
-        setIsFormValid(allFilled);
-    }, [formData]);
+   
+     useEffect(() => {
+  let allFilled = true;
+  const newErrorMessage = {
+    name: '',
+    phone_number: '',
+    Age: '',
+    Salary: ''
+  };
+  let message = '';
+
+  if (formData.name && formData.phone_number && formData.Age && formData.Salary) {
+
+    if (formData.name.length > 10) {
+      allFilled = false;
+      message = 'Name must be at least 10 characters long';
+      newErrorMessage.name = message;
+    } else if (formData.phone_number.length < 8) {
+      allFilled = false;
+      message = 'Phone number must be at least 8 digits long';
+      newErrorMessage.phone_number = message;
+    } else if (Number(formData.Age) < 18 || Number(formData.Age) > 100) {
+      allFilled = false;
+      message = 'Age must be between 18 and 100';
+      newErrorMessage.Age = message;
+    } else if (String(formData.Age).length > 3) {
+      allFilled = false;
+      message = 'Age must be a 3 digit number';
+      newErrorMessage.Age = message;
+    } else if (Number(formData.Salary) < 30000) {
+      allFilled = false;
+      message = 'Salary must be at least 30000';
+      newErrorMessage.Salary = message;
+    } else {
+      allFilled = true;
+      message = 'All required fields are filled correctly';
+    }
+
+  } else {
+    allFilled = false;
+    message = 'All fields are required';
+  }
+  setValidationMessage(message);
+  setErrorMessage(newErrorMessage);
+  console.log('Validation Message:', message);
+  setIsFormValid(allFilled);
+}, [formData]);
 
     
     const closePopup = () => {
@@ -61,12 +109,15 @@ let Form = () => {
         <form>
         <label htmlFor="name">Name: <span className="required-star">*</span>
         <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
+        {errorMessage.name && <span className="error-message">{errorMessage.name}</span>}
         </label>
         <label htmlFor="phone_number">Phone Number: <span className="required-star">*</span>
         <input type="number" name="phone_number" placeholder="phone_number" value={formData.phone_number} onChange={handleChange} />
+        {errorMessage.phone_number && <span className="error-message">{errorMessage.phone_number}</span>}
         </label>
         <label htmlFor="Age">Age: <span className="required-star">*</span>
         <input type="number" name="Age" placeholder="Age" value={formData.Age} onChange={handleChange} />
+        {errorMessage.Age && <span className="error-message">{errorMessage.Age}</span>}
         </label>
         
         
@@ -82,6 +133,7 @@ let Form = () => {
 
         <label htmlFor="Salary">Salary: <span className="required-star">*</span>
         <input type="number" name="Salary" placeholder="Salary" value={formData.Salary} onChange={handleChange} />
+        {errorMessage.Salary && <span className="error-message">{errorMessage.Salary}</span>}
         </label>
         <label htmlFor="submit">
         <button type="submit" className='submit-button' onClick={handleSubmit} disabled={!isFormValid}>
