@@ -3,6 +3,14 @@ import React from 'react';
 import { useState } from 'react';
 import Header from './component/header';
 import Form from './component/form2';
+import ThemedButton from "./component/ThemedButton";
+import ThemedText from "./component/ThemedText";
+import { ThemeProvider } from "./component/ThemeContext";
+
+
+
+
+
 
 
 function App() {
@@ -20,7 +28,10 @@ function App() {
     <>
       {/* {contentElement} */}
       <Form />
-      
+      <ThemeProvider>
+        <ThemedButton />
+        <ThemedText />
+      </ThemeProvider>
     </>
   )
 }
