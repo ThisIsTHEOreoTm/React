@@ -10,7 +10,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import Posts from './component/posts';
 import MyContext from './component/Context';
 import PostDetails from './component/postDetails';
-
+import PostsLayout from './component/postsLayout';
 
 
 function App() {
@@ -46,16 +46,20 @@ function App() {
       </div>
 
       <Routes className='routes'>
-         <Route path="/" element={contentElement} />
+         <Route index element={contentElement} />
          <Route path="/form" element={<Form />} />
-         <Route path="/posts" element={<Posts />} />
-         <Route path="/PostDetails/:id" element={<PostDetails />} />
+
+          <Route path='/posts' element={<PostsLayout />}>
+            <Route index element={<Posts />} />
+            <Route path=":id" element={<PostDetails />} />
+          </Route>
+
          <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
 
     </MyContext.Provider>
   )
-}
+} 
 export default App
 
 

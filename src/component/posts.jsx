@@ -9,7 +9,7 @@ export default function Posts() {
   const posts = useContext(MyContext);
   const Post = posts.map((post) => (
 
-    <Link key={post.id} to={`/PostDetails/${post.id}`}>
+    <Link key={post.id} to={`/posts/${post.id}`}>
       <div  className="Post">
         <h2>{post.title}</h2>
       </div>
