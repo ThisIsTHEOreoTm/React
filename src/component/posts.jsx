@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import MyContext from './Context';
-            
+import './posts.css'
 
 
 export default function Posts() {

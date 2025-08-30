@@ -49,7 +49,8 @@ function App() {
          <Route path="/" element={contentElement} />
          <Route path="/form" element={<Form />} />
          <Route path="/posts" element={<Posts />} />
-          <Route path="/PostDetails/:id" element={<PostDetails />} />
+         <Route path="/PostDetails/:id" element={<PostDetails />} />
+         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
 
     </MyContext.Provider>
