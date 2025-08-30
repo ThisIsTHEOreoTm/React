@@ -8,7 +8,11 @@ export default function PostDetails() {
   const post = posts.find((p) => p.id === parseInt(id));
 
   if (!post) {
-    return <div>Post not found</div>;
+    return (
+      <>
+        <div>Post not found</div>
+      </>
+    );
   }
 
   return (
