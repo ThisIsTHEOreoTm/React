@@ -10,7 +10,7 @@ import CheckIcon from '@mui/icons-material/Check';
 
 export default function EditTask({isVisible , taskID, onClose, onSaveSuccess} ) {
     if (!isVisible) return null;
-    const tasks = useContext(Context);
+    const { tasks, setTasks } = useContext(Context);
     const task = tasks.find(t => t.id === taskID);
 
     const [updatedTask, setUpdatedTask] = useState({

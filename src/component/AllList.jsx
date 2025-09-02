@@ -13,7 +13,7 @@ import { useState } from 'react';
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
 import Snackbar from '@mui/material/Snackbar';
-
+import Dialog from "@mui/material/Dialog";
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -25,15 +25,26 @@ export default function AllList () {
     const [editingTask, setEditingTask] = useState(false);
     const [taskID, setTaskID] = useState('');
     const [alertOpen, setAlertOpen] = useState(false);
-    const tasks = useContext(Context);
+    const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+    const { tasks, setTasks } = useContext(Context);
     function DeleteTask(id) {
-        // const index = tasks.findIndex(t => t.id === id);
-        // if (index !== -1) {
-        //     tasks.splice(index, 1);
-        // }
-        const taskDeleting = tasks.find(t => t.id === id);
-        if (taskDeleting) {
-            // Show a confirmation dialog or snackbar
+        setTaskID(id);
+        setDeleteDialogOpen(true);
+    }
+    function handleDelete() {
+        setTasks(tasks.filter(t => t.id !== taskID));
+        setTaskID('');
+        setDeleteDialogOpen(false);
+        }
+    function IsTaskDone(id){
+      const task = tasks.find(t => t.id === id);
+      return task ? task.isCompleted : false;
+    }
+    function DONETask(id){
+        const task = tasks.find(t => t.id === id);
+        if (task) {
+            task.isCompleted = true;
+            setTasks([...tasks]);
         }
     }
 
@@ -53,7 +64,7 @@ export default function AllList () {
             }} aria-label="edit" color="secondary">
                 <ModeEditIcon />
             </IconButton>
-            <IconButton  aria-label="complete" color="default">
+            <IconButton disabled={IsTaskDone(task.id)} onClick={() => { DONETask(task.id) }} aria-label="complete" color="default">
                 <DoneIcon />
             </IconButton>
             </Stack>
@@ -82,6 +93,30 @@ export default function AllList () {
           Task updated successfully!
         </Alert>
       </Snackbar>
+      
+      <Dialog
+          open={deleteDialogOpen}
+          onClose={() => {setDeleteDialogOpen(false)}}
+        >
+          <DialogTitle>Confirm Deletion</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Are you sure you want to delete this task?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => {
+                setDeleteDialogOpen(false)
+                setTaskID('');
+            }} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={() => {handleDelete()}} color="secondary">
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
+       
         </>
     );
 }
