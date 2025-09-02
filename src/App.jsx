@@ -52,7 +52,7 @@ function addTask() {
     <>
     <ThemeProvider  theme={theme}>
       <Context.Provider value={{ tasks: TaskList , setTasks: setTaskList }}>
-        <Container id="app_container">
+        <Container maxWidth="sm" id="app_container">
           <Container id="todo-list">
             <h1>My Tasks</h1>
             <Container id="tasksButtons">
